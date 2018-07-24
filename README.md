@@ -29,4 +29,5 @@
 
 <br />
 
-![](https://github.com/cbrnrd/gpm/raw/master/img/demo.svg)
+<p align="center"><img src="https://raw.githubusercontent.com/cbrnrd/gpm/master/img/demo.svg" alt="demo"></p>
+
