@@ -34,7 +34,7 @@ class Cli
         end
 
         cmd.run do |opts, args|
-          Gpm::Commands::Install.install(args.last(1)[-1], opts.bool["no-cleanup"])
+          Gpm::Commands::Install.install(args.last(1)[-1], !opts.bool["no-cleanup"])
         end
       end
 
