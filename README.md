@@ -20,3 +20,7 @@
     <img src="https://travis-ci.org/cbrnrd/gpm.svg?branch=master" alt="build">
   </a>
 </div>
+
+<br />
+
+![](https://github.com/cbrnrd/gpm/raw/master/img/demo.svg)
