@@ -1,12 +1,14 @@
 require "cossack"
+require "http/client"
 require "../system"
 require "../text"
+require "../repotools"
 
 module Gpm
 module Commands
   class Install
 
-    def self.install(repo)
+    def self.install(repo, cleanup=true)
 
       unless Dir.exists?("#{ENV["HOME"]}/.gpm")
         mkdir("#{ENV["HOME"]}/.gpm")
@@ -14,34 +16,57 @@ module Commands
 
       unless Gpm::Text.valid_repo_layout(repo)
         # Invalid repo layout
-        puts "#{Gpm::Text.red}Error: #{repo} is not a valid repo (Invalid format)#{Gpm::Text.reset}"
+        error "#{repo} is not a valid repo (Invalid format)"
         return
       end
 
       # If we get here, the repo lauyout is valid
       # Make the request to download
-      res = Cossack.get(Gpm::Text.zip_url(repo))
-      if res.status != 200
-        puts "#{Gpm::Text.red}Error: #{repo} is not a valid repo (#{res.status})#{Gpm::Text.reset}"
-        return false
+
+      cossack = Cossack::Client.new do |client|
+        # follow up to 5 redirections
+        client.use Cossack::RedirectionMiddleware
       end
-      filesize = res.headers["Content-Length"].to_i
-      puts "Downloading #{filesize} bytes..."
-      outzip = res.body
-      File.write("#{Gpm::Text.tmp_repo_path(repo)}.zip", outzip)
-      unzip(Gpm::Text.tmp_repo_path(repo))
-      unless Dir.exists?(Gpm::Text.tmp_repo_path(repo) + "/gpmbins")
-        puts "#{Gpm::Text.red}Error: #{repo} is not a valid repo (No binaries available)#{Gpm::Text.reset}"
+
+      print "Cloning repo zip..."
+      # Download the zip
+      HTTP::Client.get(Gpm::Text.zip_url(repo)) do |res|
+        if res.status_code >= 400
+          fail_msg
+          error "#{repo} is not a valid repo (#{res.status_code})"
+          return false
+        end
+        outzip = res.body_io
+        File.write("#{Gpm::Text.tmp_repo_path(repo)}.zip", outzip)
+      end
+      done_msg
+      print "Checking for bins..."
+      unzip(Gpm::Text.tmp_repo_path(repo) + ".zip")
+
+      unless File.directory?(Gpm::Text.tmp_repo_unzipped(repo) + "/gpmbins")
+        fail_msg
+        error "#{repo} is not a valid repo (No binaries available)"
+        clean_up_repo(repo) if cleanup
         return false
       end
 
-      unless Dir.exists?(Gpm::Text.tmp_repo_path(repo) + "/gpmbins/#{arch}")
-        puts "#{Gpm::Text.red}Error: No binaries available for arch #{arch}#{Gpm::Text.reset}"
-        return false
+      unless check_for_arch_bins(repo)
+        clean_up_repo(repo) if cleanup
+        exit 0
       end
 
-      d = Dir.new(Gpm::Text.tmp_repo_path(repo) + "/gpmbins/#{arch}")
-      d.each_child { |x| copy(x, "/usr/local/bin")}
+      d = Dir.new(Gpm::Text.tmp_repo_unzipped(repo) + "/gpmbins/#{arch}")
+      puts "Moving bins to /usr/local/bin..."
+      FileUtils.cd(Gpm::Text.tmp_repo_unzipped(repo) + "/gpmbins/#{arch}") {
+        d.each_child { |x|
+          chmod(x, 0o755)
+          print "  Moving `" + x + "`..."
+          copy(x, "/usr/local/bin")
+          done_msg
+        }
+      }
+
+      clean_up_repo(repo) if cleanup
 
     end
   end

@@ -1,13 +1,9 @@
 require "./cli"
+require "./system"
 
-#lib LibC
-#  fun setuid(uid_t : Int)
-#  fun getuid : Int
-#end
-
-#if LibC.getuid != 0
-#  "Run gpm as the super user for it to function properly."
-#  exit 0
-#end
+if uid != 0
+  puts "Run gpm as the super user for it to function properly."
+  exit 0
+end
 
 Gpm::Cli.run(ARGV)

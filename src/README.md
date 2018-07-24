@@ -1,6 +1,7 @@
 # GPM - GitHub Package Manager
 
 ### `gpm install`
+
 The goal with the install task is to request GitHub as little as possible. Most
  info can be found in the repo's `.git` directory.
 
@@ -14,14 +15,15 @@ The `install` command works as follows:
 6. Copy the binary to `/usr/local/bin`
 
 *TODO*
+
 * Add post install capabilities to gpm.json
 
 ### `gpm uninstall`
 
 The `uninstall` command works as follows:
 
-1. Using `command -v` locate where the binary is (user might have moved it).
-2. Take the output of step one and shred/rm the file.
+1. view the local list of bins associated with the package (WiP)
+2. iterate through the bins and delete them
 
 ### `gpm download`
 
