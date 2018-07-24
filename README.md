@@ -6,6 +6,7 @@
   <strong>:package:The Linux package manager built on GitHub:octopus:</strong>
 </div>
 
+
 <div align="center">
   <!-- Version -->
 
@@ -13,10 +14,10 @@
 
   <!-- License -->
   <a href="https://marktext.github.io/website">
-    <img src="https://img.shields.io/github/license/cbrnrd/gpm.svg?style=flat-square" alt="LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="LICENSE">
   </a>
   <!-- Build Status -->
   <a href="https://marktext.github.io/website">
-    <img src="https://travis-ci.org/cbrnrd/gpm.svg?branch=master" alt="build">
+    <img src="https://img.shields.io/travis/cbrnrd/gpm.svg?style=flat-square" alt="build">
   </a>
 </div>
