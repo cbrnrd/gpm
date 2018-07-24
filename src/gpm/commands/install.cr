@@ -1,4 +1,4 @@
-require "cossack"
+require "spinner"
 require "http/client"
 require "../system"
 require "../text"
@@ -22,13 +22,7 @@ module Commands
 
       # If we get here, the repo lauyout is valid
       # Make the request to download
-
-      cossack = Cossack::Client.new do |client|
-        # follow up to 5 redirections
-        client.use Cossack::RedirectionMiddleware
-      end
-
-      print "Cloning repo zip..."
+      print "Cloning repo zip... "
       # Download the zip
       HTTP::Client.get(Gpm::Text.zip_url(repo)) do |res|
         if res.status_code >= 400

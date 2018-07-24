@@ -12,6 +12,3 @@ dependencies:
   commander:
     github: mrrooijen/commander
     version: ~> 0.3.
-  cossack:
-    github: crystal-community/cossack
-    version: ~> 0.1
