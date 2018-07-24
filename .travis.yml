@@ -1,7 +1,7 @@
 language: crystal
 
 install:
-  - shards install
+  - make deps
 script:
   - crystal env
-  - crystal build --release src/gpm/main.cr
+  - make build
