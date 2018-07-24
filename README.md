@@ -6,6 +6,7 @@
   <strong>:package:The Linux package manager built on GitHub:octopus:</strong>
 </div>
 
+<br />
 
 <div align="center">
   <!-- Version -->
