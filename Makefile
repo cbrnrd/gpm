@@ -19,7 +19,7 @@ deps:
 
 install: deps build
 	mkdir -p $(PREFIX)/bin
-	cp ./bin/ezdb $(PREFIX)/bin
+	cp ./bin/gpm $(PREFIX)/bin
 
 reinstall: build
 	cp -rf ./bin/gpm $(GPM_BIN)
