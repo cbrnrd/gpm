@@ -7,7 +7,7 @@ build:
 	$(CRYSTAL_BIN) build --release -o bin/gpm src/gpm/main.cr $(CRFLAGS)
 
 clean:
-	rm -f ./bin/ezdb
+	rm -f ./bin/gpm
 
 test:
 	$(CRYSTAL_BIN) spec --verbose
