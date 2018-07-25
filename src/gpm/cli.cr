@@ -20,6 +20,7 @@ class Cli
         end
       end
 
+
       command.commands.add do |cmd|
         cmd.use = "install"
         cmd.short = "Install a package."
@@ -35,6 +36,16 @@ class Cli
 
         cmd.run do |opts, args|
           Gpm::Commands::Install.install(args.last(1)[-1], !opts.bool["no-cleanup"])
+        end
+      end
+
+      command.commands.add do |cmd|
+        cmd.use = "uninstall"
+        cmd.short = "Uninstall bins from a package"
+        cmd.long  = cmd.short
+
+        cmd.run do |opts, args|
+          Gpm::Commands::Uninstall.uninstall(args.last(1)[-1])
         end
       end
 

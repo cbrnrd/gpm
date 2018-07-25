@@ -1,3 +1,4 @@
+require "json"
 require "http/client"
 require "../system"
 require "../text"
@@ -11,6 +12,7 @@ module Commands
 
       unless Dir.exists?("#{ENV["HOME"]}/.gpm")
         mkdir("#{ENV["HOME"]}/.gpm")
+        FileUtils.touch("#{ENV["HOME"]}/.gpm/bins.json")
       end
 
       unless Gpm::Text.valid_repo_layout(repo)
@@ -22,6 +24,7 @@ module Commands
       # If we get here, the repo lauyout is valid
       # Make the request to download
       print "Cloning repo zip... "
+
       # Download the zip
       HTTP::Client.get(Gpm::Text.zip_url(repo)) do |res|
         if res.status_code >= 400
@@ -51,13 +54,21 @@ module Commands
       d = Dir.new(Gpm::Text.tmp_repo_unzipped(repo) + "/gpmbins/#{arch}")
       puts "Moving bins to /usr/local/bin..."
       FileUtils.cd(Gpm::Text.tmp_repo_unzipped(repo) + "/gpmbins/#{arch}") {
+        bins = {"#{repo}" => [] of String}
+        i = 0
         d.each_child { |x|
           chmod(x, 0o755)
           print "  Moving `" + x + "`..."
           copy(x, "/usr/local/bin")
+          bins["#{repo}"] << "/usr/local/bin/#{x}"
           done_msg
+          i += 1
         }
+        jsonified = bins.to_json
+        File.write("#{ENV["HOME"]}/.gpm/bins.json", jsonified, "a")
+
       }
+
 
       clean_up_repo(repo) if cleanup
 
