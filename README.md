@@ -43,7 +43,7 @@ sudo snap install --edge --devmode github-package-manager
 
 #### Building from source: 
 ```
-git clone https://github.com/cbrnrd/gpm && cd gpm && make install
+git clone https://github.com/cbrnrd/gpm && cd gpm && sudo make install
 ```
 
 #### GitHub Releases
