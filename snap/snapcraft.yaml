@@ -1,0 +1,16 @@
+name: gpm
+version: 0.1.0
+summary: The Linux package manager built on GitHub
+description: |
+  GPM (GitHub Package Manager) is a Linux package manager built on GitHub. Using GitHub repositories as packages, it's effortless to put a package on gpm.
+
+confinement: devmode
+  
+parts:
+  gpm:
+    plugin: dump
+    source: https://github.com/cbrnrd/gpm/releases/download/0.1.0/gpm_0.1.0.zip
+
+apps:
+  gpm:
+    command: gpm
