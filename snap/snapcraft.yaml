@@ -1,4 +1,4 @@
-name: gpm
+name: github-package-manager
 version: 0.1.0
 summary: The Linux package manager built on GitHub
 description: |
