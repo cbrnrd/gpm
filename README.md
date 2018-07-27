@@ -37,6 +37,7 @@ Welcome to `gpm`! `gpm` (**G**ithub **P**ackage **M**anager) is a binary distrib
 There are a few ways to install gpm:
 
 #### Using `snapcraft`
+[![Snap Status](https://build.snapcraft.io/badge/cbrnrd/gpm.svg)](https://build.snapcraft.io/user/cbrnrd/gpm)
 ```
 sudo snap install --edge --devmode github-package-manager
 ```
