@@ -8,6 +8,9 @@ build:
 
 clean:
 	rm -f ./bin/gpm
+	
+rm:
+	rm -f $(PREFIX)/bin/gpm
 
 test:
 	$(CRYSTAL_BIN) spec --verbose
