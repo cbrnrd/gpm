@@ -21,9 +21,18 @@ def uid
 end
 
 def arch
-  io = IO::Memory.new
-  Process.run("uname -m", shell: true, output: io)
-  return io.to_s.strip
+  os_io = IO::Memory.new
+  Process.run("uname", shell: true, output: os_io)
+  arch_io = IO::Memory.new
+  Process.run("uname -m", shell: true, output: arch_io)
+  if os_io.to_s.strip == "Darwin"
+    return "x86_64-apple-darwin" if arch_io.to_s.strip == "x86_64"
+    return "i686-apple-darwin" if arch_io.to_s.strip == "i686"
+  elsif os_io.to_s.strip == "Linux"
+    return "x86_64-linux-gnu" if arch_io.to_s.strip == "x86_64"
+    return "i686-linux-gnu" if arch_io.to_s.strip == "i686"
+  end
+  # TODO Add Windoze
 end
 
 def rm_rf(path : String)
