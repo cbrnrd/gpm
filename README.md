@@ -47,6 +47,11 @@ sudo snap install --edge --devmode github-package-manager
 git clone https://github.com/cbrnrd/gpm && cd gpm && sudo make install
 ```
 
+#### Install script:
+```
+curl -fsSL https://git.io/get-gpm | sudo bash
+```
+
 #### GitHub Releases
 You can get the latest release [here](https://github.com/cbrnrd/gpm/releases)
 
