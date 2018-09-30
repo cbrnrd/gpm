@@ -1,0 +1,14 @@
+name: gpm
+version: 0.2.0
+
+authors:
+  - cbrnrd <0xCB@protonmail.com>
+
+crystal: 0.25.1
+
+license: MIT
+
+dependencies:
+  commander:
+    github: mrrooijen/commander
+    version: ~> 0.3.
