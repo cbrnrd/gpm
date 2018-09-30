@@ -1,0 +1,7 @@
+language: crystal
+
+install:
+  - make deps
+script:
+  - crystal env
+  - make build
