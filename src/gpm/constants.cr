@@ -1,5 +1,5 @@
 module Gpm
-  VERSION = "0.2.0"
+  VERSION = "0.2.1"
 end
 
 ARCH_x86 = "i686"

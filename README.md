@@ -10,7 +10,7 @@
 
 <div align="center">
   <!-- Version -->
-  <img src="https://img.shields.io/badge/version-0.1.0-brightgreen.svg?style=flat-square" alt="version">
+  <img src="https://img.shields.io/badge/version-0.2.1-brightgreen.svg?style=flat-square" alt="version">
 
   <!-- License -->
   <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="LICENSE">
