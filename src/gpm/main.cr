@@ -6,4 +6,8 @@ if uid != 0
   exit 0
 end
 
+if ARGV.size == 0
+  ARGV << "-h"
+end
+
 Gpm::Cli.run(ARGV)
