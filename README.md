@@ -25,6 +25,11 @@
   <img src="https://img.shields.io/github/languages/code-size/badges/shields.svg?color=bright-green&style=flat-square">
   <a href="https://carterbrainerd.me/donations">
     <img src="https://img.shields.io/badge/donate-%3C3-red.svg?longCache=true&style=flat-square">
+  
+  <!-- Snap Store -->
+  <p align="center><a href="https://snapcraft.io/github-package-manager">
+  <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
+</a></p>
   </a>
 </div>
 
