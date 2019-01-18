@@ -23,14 +23,8 @@
   <!-- Last Commit -->
   <img src="https://img.shields.io/github/last-commit/cbrnrd/gpm.svg?style=flat-square" alt="last commit">
   <img src="https://img.shields.io/github/languages/code-size/badges/shields.svg?color=bright-green&style=flat-square">
-  <a href="https://carterbrainerd.me/donations">
-    <img src="https://img.shields.io/badge/donate-%3C3-red.svg?longCache=true&style=flat-square">
-  
-  <!-- Snap Store -->
-  <p align="center><a href="https://snapcraft.io/github-package-manager">
-  <img alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
-</a></p>
-  </a>
+  <a href="https://carterbrainerd.me/donations"><img src="https://img.shields.io/badge/donate-%3C3-red.svg?longCache=true&style=flat-square"></a>
+
 </div>
 
 <br />
@@ -42,7 +36,7 @@ Welcome to `gpm`! `gpm` (**G**ithub **P**ackage **M**anager) is a binary distrib
 There are a few ways to install gpm:
 
 #### Using `snapcraft`
-[![Snap Status](https://build.snapcraft.io/badge/cbrnrd/gpm.svg)](https://build.snapcraft.io/user/cbrnrd/gpm)
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/github-package-manager)
 ```
 sudo snap install --edge --devmode github-package-manager
 ```
